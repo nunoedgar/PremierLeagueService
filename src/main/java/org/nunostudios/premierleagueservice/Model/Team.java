@@ -1,4 +1,4 @@
-package Model;
+package org.nunostudios.premierleagueservice.Model;
 
 import jakarta.persistence.*;
 
@@ -28,6 +28,33 @@ public class Team {
 
     @OneToMany(mappedBy = "team")
     private List<Player> players = new ArrayList<>();
+
+    public Team() {
+    }
+
+    public Team(Long id, String name, String color1, String color2, Integer points, List<Player> players) {
+        this.id = id;
+        this.name = name;
+        this.color1 = color1;
+        this.color2 = color2;
+        this.points = points;
+        this.players = players;
+    }
+
+    public Team(String name, String color1, String color2, Integer points, List<Player> players) {
+        this.name = name;
+        this.color1 = color1;
+        this.color2 = color2;
+        this.points = points;
+        this.players = players;
+    }
+
+    public Team(String name, String color1, String color2, Integer points) {
+        this.name = name;
+        this.color1 = color1;
+        this.color2 = color2;
+        this.points = points;
+    }
 
     public List<Player> getPlayers() {
         return players;

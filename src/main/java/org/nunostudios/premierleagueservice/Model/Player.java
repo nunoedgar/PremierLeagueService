@@ -1,4 +1,4 @@
-package Model;
+package org.nunostudios.premierleagueservice.Model;
 
 import jakarta.persistence.*;
 
