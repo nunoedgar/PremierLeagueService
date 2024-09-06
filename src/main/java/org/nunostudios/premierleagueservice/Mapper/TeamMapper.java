@@ -6,6 +6,8 @@ import org.mapstruct.factory.Mappers;
 import org.nunostudios.premierleagueservice.DTO.TeamDTO;
 import org.nunostudios.premierleagueservice.Model.Team;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring", uses = PlayerMapper.class)
 public interface TeamMapper {
 
@@ -16,4 +18,6 @@ public interface TeamMapper {
 
     @Mapping(source = "players", target = "players")
     Team toEntity(TeamDTO teamDTO);
+
+    List<TeamDTO> toDTOList(List<Team> teams);
 }

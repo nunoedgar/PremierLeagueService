@@ -16,19 +16,17 @@ import java.util.Optional;
 @RequestMapping("api/team")
 public class TeamController {
 
-    private final TeamService teamService;
+    @Autowired
+    private TeamService teamService;
 
     @Autowired
     private TeamMapper teamMapper;
 
-    public TeamController(TeamService personService) {
-        this.teamService = personService;
-    }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Team> getTeams() {
-        return this.teamService.getTeams();
+    public List<TeamDTO> getTeams() {
+        return teamMapper.toDTOList(this.teamService.getTeams());
     }
 
     @GetMapping("/{id}")

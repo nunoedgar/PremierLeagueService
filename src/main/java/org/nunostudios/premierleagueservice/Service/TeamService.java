@@ -2,6 +2,7 @@ package org.nunostudios.premierleagueservice.Service;
 
 import org.nunostudios.premierleagueservice.Model.Team;
 import org.nunostudios.premierleagueservice.Repository.TeamRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,11 +11,8 @@ import java.util.Optional;
 @Service
 public class TeamService {
 
-    private final TeamRepository teamRepository;
-
-    public TeamService(TeamRepository teamRepository) {
-        this.teamRepository = teamRepository;
-    }
+    @Autowired
+    private TeamRepository teamRepository;
 
     public Team createTeam(Team team){
         return this.teamRepository.save(team);
