@@ -1,7 +1,10 @@
 package org.nunostudios.premierleagueservice.Controller;
 
+import org.nunostudios.premierleagueservice.DTO.TeamDTO;
+import org.nunostudios.premierleagueservice.Mapper.TeamMapper;
 import org.nunostudios.premierleagueservice.Model.Team;
 import org.nunostudios.premierleagueservice.Service.TeamService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -15,6 +18,9 @@ public class TeamController {
 
     private final TeamService teamService;
 
+    @Autowired
+    private TeamMapper teamMapper;
+
     public TeamController(TeamService personService) {
         this.teamService = personService;
     }
@@ -27,10 +33,10 @@ public class TeamController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Team getPersonById(@PathVariable Long id) {
-        Optional<Team> person = this.teamService.getTeamById(id);
-        if(person.isPresent()){
-            return person.get();
+    public TeamDTO getTeamById(@PathVariable Long id) {
+        Optional<Team> team = this.teamService.getTeamById(id);
+        if(team.isPresent()){
+            return teamMapper.toDTO(team.get());
         }else{
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Team not found");
         }

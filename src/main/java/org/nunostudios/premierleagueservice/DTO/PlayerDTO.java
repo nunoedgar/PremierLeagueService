@@ -5,6 +5,7 @@ public class PlayerDTO {
     private String name;
     private Integer age;
     private Long teamId;
+    private String teamName;
 
     public Long getId() {
         return id;
@@ -36,5 +37,13 @@ public class PlayerDTO {
 
     public void setTeamId(Long teamId) {
         this.teamId = teamId;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
     }
 }
