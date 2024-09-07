@@ -6,6 +6,7 @@ import org.nunostudios.premierleagueservice.Model.Team;
 import org.nunostudios.premierleagueservice.Service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -54,7 +55,7 @@ public class TeamController {
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void deletePerson(@PathVariable Long id) {
-        this.teamService.deleteTeam(id);
+    public void deleteTeam(@PathVariable Long id) {
+        if(!this.teamService.deleteTeam(id)) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Team not found");
     }
 }

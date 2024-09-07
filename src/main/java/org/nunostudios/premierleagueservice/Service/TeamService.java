@@ -59,8 +59,10 @@ public class TeamService {
         return null;// this.teamRepository.save(team);
     }
 
-    public void deleteTeam(Long id){
-        //TODO DELETE CASCADE
+    public boolean deleteTeam(Long id){
+        if(!teamRepository.existsById(id)) return false;
+        this.playerRepository.dissociatePlayersFromTeam(id);
         this.teamRepository.deleteById(id);
+        return true;
     }
 }
