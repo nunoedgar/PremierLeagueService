@@ -17,7 +17,7 @@ public interface PlayerMapper {
     @Mapping(source = "team.name", target = "teamName")
     PlayerDTO toDTO(Player player);
 
-    @Mapping(source = "teamId", target = "team.id")
+    @Mapping(target = "team", ignore = true)
     Player toEntity(PlayerDTO playerDTO);
 
     List<PlayerDTO> toDTOList(List<Player> players);
