@@ -51,12 +51,15 @@ public class TeamService {
         return this.teamRepository.findById(id);
     }
 
-    public Team updateTeam(Team team){
-        //TODO VALIDATIONS
-//        if(this.teamRepository.findById(team.getId()).get() == null){
-//            return null;
-//        }
-        return null;// this.teamRepository.save(team);
+    public Team updateTeam(Long teamId, TeamDTO teamDTO){
+        Optional<Team> byId = this.teamRepository.findById(teamId);
+        if(byId.isEmpty()) return null;
+        Team team = byId.get();
+        team.setName(teamDTO.getName());
+        team.setColor1(teamDTO.getColor1());
+        team.setColor2(teamDTO.getColor2());
+        team.setPoints(teamDTO.getPoints());
+        return this.teamRepository.save(team);
     }
 
     public boolean deleteTeam(Long id){

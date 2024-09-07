@@ -49,11 +49,13 @@ public class TeamController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Team updateTeam(@PathVariable Long id, @RequestBody Team team) {
-        return this.teamService.updateTeam(team);
+    public TeamDTO updateTeam(@PathVariable Long id, @RequestBody TeamDTO teamDTO) {
+        Team team = this.teamService.updateTeam(id, teamDTO);
+        if(team == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Team not found");
+        return teamMapper.toDTO(team);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteTeam(@PathVariable Long id) {
         if(!this.teamService.deleteTeam(id)) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Team not found");
