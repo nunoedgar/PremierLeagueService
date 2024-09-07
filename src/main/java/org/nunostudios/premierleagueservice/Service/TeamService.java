@@ -36,12 +36,11 @@ public class TeamService {
             if(byId.isPresent()){
                 Player player = byId.get();
                 player.setTeam(teamSaved);
-                this.playerRepository.save(player);
                 playerList.add(player);
             }
         }
         teamSaved.setPlayers(playerList);
-        return teamSaved;
+        return this.teamRepository.save(teamSaved);
     }
 
     public List<Team> getTeams(){

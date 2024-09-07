@@ -17,7 +17,7 @@ public class Player {
     @Column(name = "age")
     private Integer age;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "team_id")
     private Team team;
 
