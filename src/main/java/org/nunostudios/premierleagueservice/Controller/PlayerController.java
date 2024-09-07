@@ -43,7 +43,9 @@ public class PlayerController {
     @PostMapping()
     @ResponseStatus(HttpStatus.OK)
     public PlayerDTO createPlayer(@RequestBody PlayerDTO playerDTO) {
-        return playerMapper.toDTO(this.playerService.createPlayer(playerDTO));
+        PlayerDTO result = playerMapper.toDTO(this.playerService.createPlayer(playerDTO));
+        if(result == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Team not found");
+        return result;
     }
 
     @PutMapping("/{id}")

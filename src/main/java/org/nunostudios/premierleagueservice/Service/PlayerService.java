@@ -30,6 +30,15 @@ public class PlayerService {
 
     public Player createPlayer(PlayerDTO playerDTO){
         Player player = playerMapper.toEntity(playerDTO);
+        if(playerDTO.getTeamId() != null){
+            Optional<Team> byId = teamRepository.findById(playerDTO.getTeamId());
+            if(byId.isPresent()){
+                Team team = byId.get();
+                player.setTeam(team);
+            }else{
+                return null;
+            }
+        }
         return this.playerRepository.save(player);
     }
 
