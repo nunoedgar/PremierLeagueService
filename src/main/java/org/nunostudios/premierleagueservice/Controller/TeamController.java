@@ -6,7 +6,6 @@ import org.nunostudios.premierleagueservice.Model.Team;
 import org.nunostudios.premierleagueservice.Service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -39,6 +38,12 @@ public class TeamController {
         }else{
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Team not found");
         }
+    }
+
+    @GetMapping("/tableLeader")
+    @ResponseStatus(HttpStatus.OK)
+    public TeamDTO getTableLeader() {
+        return teamMapper.toDTO(this.teamService.getTableLeader());
     }
 
     @PostMapping()

@@ -1,7 +1,6 @@
 package org.nunostudios.premierleagueservice.Service;
 
 import org.nunostudios.premierleagueservice.DTO.PlayerDTO;
-import org.nunostudios.premierleagueservice.DTO.TeamDTO;
 import org.nunostudios.premierleagueservice.Mapper.PlayerMapper;
 import org.nunostudios.premierleagueservice.Mapper.TeamMapper;
 import org.nunostudios.premierleagueservice.Model.Player;
@@ -11,7 +10,6 @@ import org.nunostudios.premierleagueservice.Repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 

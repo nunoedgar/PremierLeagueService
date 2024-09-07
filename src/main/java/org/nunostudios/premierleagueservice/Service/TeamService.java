@@ -1,6 +1,5 @@
 package org.nunostudios.premierleagueservice.Service;
 
-import org.nunostudios.premierleagueservice.DTO.PlayerDTO;
 import org.nunostudios.premierleagueservice.DTO.TeamDTO;
 import org.nunostudios.premierleagueservice.Mapper.TeamMapper;
 import org.nunostudios.premierleagueservice.Model.Player;
@@ -9,7 +8,6 @@ import org.nunostudios.premierleagueservice.Repository.PlayerRepository;
 import org.nunostudios.premierleagueservice.Repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +47,10 @@ public class TeamService {
 
     public Optional<Team> getTeamById(Long id){
         return this.teamRepository.findById(id);
+    }
+
+    public Team getTableLeader(){
+        return this.teamRepository.findTableLeader();
     }
 
     public Team updateTeam(Long teamId, TeamDTO teamDTO){
