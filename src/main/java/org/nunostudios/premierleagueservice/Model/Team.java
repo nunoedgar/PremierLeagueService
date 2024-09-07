@@ -26,7 +26,7 @@ public class Team {
     @Column(name = "points")
     private Integer points;
 
-    @OneToMany(mappedBy = "team")
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
     private List<Player> players = new ArrayList<>();
 
     public Team() {

@@ -10,6 +10,7 @@ public class TeamDTO {
     private String color2;
     private int points;
     private List<PlayerDTO> players = new ArrayList<>();
+    private List<Long> playersId = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -57,5 +58,13 @@ public class TeamDTO {
 
     public void setPlayers(List<PlayerDTO> players) {
         this.players = players;
+    }
+
+    public List<Long> getPlayersId() {
+        return playersId;
+    }
+
+    public void setPlayersId(List<Long> playersId) {
+        this.playersId = playersId;
     }
 }

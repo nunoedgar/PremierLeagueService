@@ -21,4 +21,5 @@ public interface PlayerMapper {
     Player toEntity(PlayerDTO playerDTO);
 
     List<PlayerDTO> toDTOList(List<Player> players);
+    List<Player> toEntityList(List<PlayerDTO> playerDTOs);
 }

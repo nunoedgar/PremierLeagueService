@@ -40,9 +40,15 @@ public class TeamController {
         }
     }
 
+    @PostMapping()
+    @ResponseStatus(HttpStatus.OK)
+    public TeamDTO createTeam(@RequestBody TeamDTO teamDTO) {
+        return teamMapper.toDTO(this.teamService.createTeam(teamDTO));
+    }
+
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Team updatePerson(@PathVariable Long id, @RequestBody Team team) {
+    public Team updateTeam(@PathVariable Long id, @RequestBody Team team) {
         return this.teamService.updateTeam(team);
     }
 
