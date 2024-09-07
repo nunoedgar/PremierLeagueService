@@ -50,7 +50,7 @@ public class PlayerController {
     @ResponseStatus(HttpStatus.OK)
     public PlayerDTO updatePlayer(@PathVariable Long id, @RequestBody PlayerDTO playerDTO) {
         Player player = this.playerService.updatePlayer(id, playerDTO);
-        if(player == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Player not found");
+        if(player == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not found");
         return playerMapper.toDTO(player);
     }
 

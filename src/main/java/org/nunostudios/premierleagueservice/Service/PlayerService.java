@@ -44,8 +44,16 @@ public class PlayerService {
     }
 
     public Player updatePlayer(Long playerId, PlayerDTO playerDTO){
-        //TODO
-        return null;
+        Optional<Player> byId = this.playerRepository.findById(playerId);
+        if(byId.isEmpty()) return null;
+        Player player = byId.get();
+        player.setName(playerDTO.getName());
+        player.setAge(playerDTO.getAge());
+        Optional<Team> teamById = this.teamRepository.findById(playerDTO.getTeamId());
+        if(teamById.isEmpty()) return null;
+        Team team = teamById.get();
+        player.setTeam(team);
+        return this.playerRepository.save(player);
     }
 
     public boolean deletePlayer(Long id){
