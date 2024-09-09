@@ -1,5 +1,5 @@
 Create table Team(id bigserial Primary key, name text, color1 text, color2 text, points integer);
-Insert into team values(1, "Manchester United", "Red", "Green",3);
+Insert into team values(1, 'Manchester United', 'Red', 'Green',3);
 Insert into team values(2, 'Liverpool', 'Red', 'White',2);
 Insert into team values(3, 'Manchester City', 'Blue', 'Yellow',6);
 
