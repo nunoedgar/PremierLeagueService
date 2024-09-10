@@ -36,7 +36,7 @@ public class PlayerController {
         if(player.isPresent()){
             return playerMapper.toDTO(player.get());
         }else{
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Team not found");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Player not found");
         }
     }
 
