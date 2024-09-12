@@ -46,12 +46,14 @@ public class TeamController {
         return teamMapper.toDTO(this.teamService.getTableLeader());
     }
 
+    @CrossOrigin
     @PostMapping()
     @ResponseStatus(HttpStatus.OK)
     public TeamDTO createTeam(@RequestBody TeamDTO teamDTO) {
         return teamMapper.toDTO(this.teamService.createTeam(teamDTO));
     }
 
+    @CrossOrigin
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public TeamDTO updateTeam(@PathVariable Long id, @RequestBody TeamDTO teamDTO) {
@@ -60,6 +62,7 @@ public class TeamController {
         return teamMapper.toDTO(team);
     }
 
+    @CrossOrigin
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteTeam(@PathVariable Long id) {

@@ -40,6 +40,7 @@ public class PlayerController {
         }
     }
 
+    @CrossOrigin
     @PostMapping()
     @ResponseStatus(HttpStatus.OK)
     public PlayerDTO createPlayer(@RequestBody PlayerDTO playerDTO) {
@@ -48,6 +49,7 @@ public class PlayerController {
         return result;
     }
 
+    @CrossOrigin
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public PlayerDTO updatePlayer(@PathVariable Long id, @RequestBody PlayerDTO playerDTO) {
@@ -56,6 +58,7 @@ public class PlayerController {
         return playerMapper.toDTO(player);
     }
 
+    @CrossOrigin
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deletePlayer(@PathVariable Long id) {
