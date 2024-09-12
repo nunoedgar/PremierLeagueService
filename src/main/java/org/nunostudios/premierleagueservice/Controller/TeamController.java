@@ -23,12 +23,14 @@ public class TeamController {
     private TeamMapper teamMapper;
 
 
+    @CrossOrigin
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<TeamDTO> getTeams() {
         return teamMapper.toDTOList(this.teamService.getTeams());
     }
 
+    @CrossOrigin
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public TeamDTO getTeamById(@PathVariable Long id) {
@@ -40,6 +42,7 @@ public class TeamController {
         }
     }
 
+    @CrossOrigin
     @GetMapping("/tableLeader")
     @ResponseStatus(HttpStatus.OK)
     public TeamDTO getTableLeader() {

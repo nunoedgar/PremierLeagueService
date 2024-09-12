@@ -23,12 +23,14 @@ public class PlayerController {
     private PlayerMapper playerMapper;
 
 
+    @CrossOrigin
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<PlayerDTO> getPlayers() {
         return playerMapper.toDTOList(this.playerService.getPlayers());
     }
 
+    @CrossOrigin
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public PlayerDTO getPlayerById(@PathVariable Long id) {
