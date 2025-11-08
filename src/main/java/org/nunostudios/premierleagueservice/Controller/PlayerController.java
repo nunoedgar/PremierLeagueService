@@ -3,7 +3,7 @@ package org.nunostudios.premierleagueservice.Controller;
 import org.nunostudios.premierleagueservice.DTO.PlayerDTO;
 import org.nunostudios.premierleagueservice.Mapper.PlayerMapper;
 import org.nunostudios.premierleagueservice.Model.Player;
-import org.nunostudios.premierleagueservice.Service.PlayerService;
+import org.nunostudios.premierleagueservice.Service.impl.PlayerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +17,7 @@ import java.util.Optional;
 public class PlayerController {
 
     @Autowired
-    private PlayerService playerService;
+    private PlayerServiceImpl playerService;
 
     @Autowired
     private PlayerMapper playerMapper;
