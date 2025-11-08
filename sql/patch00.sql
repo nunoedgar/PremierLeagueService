@@ -8,5 +8,5 @@ Insert into player values(default, 'Bruno Fernandes', 30, 1);
 Insert into player values(default, 'Manuel Ugarte', 23, 1);
 Insert into player values(default, 'Diogo Jota', 27, 2);
 Insert into player values(default, 'Mohamed Salah', 32, 2);
-Insert into player values(default, 'Ruben Dias', 33, 3);
+Insert into player values(default, 'Ruben Dias', 28, 3);
 Insert into player values(default, 'Phil Foden', 24, 3);
