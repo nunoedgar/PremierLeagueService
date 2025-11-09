@@ -1,5 +1,6 @@
 package org.nunostudios.premierleagueservice.Service.impl;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.nunostudios.premierleagueservice.DTO.TeamDTO;
 import org.nunostudios.premierleagueservice.Mapper.TeamMapper;
 import org.nunostudios.premierleagueservice.Model.Player;
@@ -61,7 +62,7 @@ public class TeamServiceImpl implements TeamService {
     @Override
     public Team updateTeam(Long teamId, TeamDTO teamDTO){
         Optional<Team> byId = this.teamRepository.findById(teamId);
-        if(byId.isEmpty()) return null;
+        if(byId.isEmpty()) throw new EntityNotFoundException("Team not found");
         Team team = byId.get();
         team.setName(teamDTO.getName());
         team.setColor1(teamDTO.getColor1());

@@ -61,7 +61,6 @@ public class TeamController {
     @ResponseStatus(HttpStatus.OK)
     public TeamDTO updateTeam(@PathVariable Long id, @RequestBody TeamDTO teamDTO) {
         Team team = this.teamService.updateTeam(id, teamDTO);
-        if(team == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Team not found");
         return teamMapper.toDTO(team);
     }
 

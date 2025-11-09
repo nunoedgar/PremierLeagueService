@@ -1,8 +1,8 @@
 package org.nunostudios.premierleagueservice.Service.impl;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.nunostudios.premierleagueservice.DTO.PlayerDTO;
 import org.nunostudios.premierleagueservice.Mapper.PlayerMapper;
-import org.nunostudios.premierleagueservice.Mapper.TeamMapper;
 import org.nunostudios.premierleagueservice.Model.Player;
 import org.nunostudios.premierleagueservice.Model.Team;
 import org.nunostudios.premierleagueservice.Repository.PlayerRepository;
@@ -24,9 +24,6 @@ public class PlayerServiceImpl implements PlayerService {
     private PlayerRepository playerRepository;
 
     @Autowired
-    private TeamMapper teamMapper;
-
-    @Autowired
     private PlayerMapper playerMapper;
 
     @Override
@@ -38,7 +35,7 @@ public class PlayerServiceImpl implements PlayerService {
                 Team team = byId.get();
                 player.setTeam(team);
             }else{
-                return null;
+                throw new EntityNotFoundException("Team not found");
             }
         }
         return this.playerRepository.save(player);
@@ -57,12 +54,12 @@ public class PlayerServiceImpl implements PlayerService {
     @Override
     public Player updatePlayer(Long playerId, PlayerDTO playerDTO){
         Optional<Player> byId = this.playerRepository.findById(playerId);
-        if(byId.isEmpty()) return null;
+        if(byId.isEmpty()) throw new EntityNotFoundException("Player not found");
         Player player = byId.get();
         player.setName(playerDTO.getName());
         player.setAge(playerDTO.getAge());
         Optional<Team> teamById = this.teamRepository.findById(playerDTO.getTeamId());
-        if(teamById.isEmpty()) return null;
+        if(teamById.isEmpty()) throw new EntityNotFoundException("Team not found");
         Team team = teamById.get();
         player.setTeam(team);
         return this.playerRepository.save(player);

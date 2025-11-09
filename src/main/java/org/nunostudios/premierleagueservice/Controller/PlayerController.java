@@ -46,9 +46,7 @@ public class PlayerController {
     @PostMapping()
     @ResponseStatus(HttpStatus.OK)
     public PlayerDTO createPlayer(@RequestBody PlayerDTO playerDTO) {
-        PlayerDTO result = playerMapper.toDTO(this.playerService.createPlayer(playerDTO));
-        if(result == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Team not found");
-        return result;
+        return playerMapper.toDTO(this.playerService.createPlayer(playerDTO));
     }
 
     @CrossOrigin
@@ -56,7 +54,6 @@ public class PlayerController {
     @ResponseStatus(HttpStatus.OK)
     public PlayerDTO updatePlayer(@PathVariable Long id, @RequestBody PlayerDTO playerDTO) {
         Player player = this.playerService.updatePlayer(id, playerDTO);
-        if(player == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not found");
         return playerMapper.toDTO(player);
     }
 
