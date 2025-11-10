@@ -4,7 +4,6 @@ import org.nunostudios.premierleagueservice.DTO.PlayerDTO;
 import org.nunostudios.premierleagueservice.Mapper.PlayerMapper;
 import org.nunostudios.premierleagueservice.Model.Player;
 import org.nunostudios.premierleagueservice.Service.impl.PlayerServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -16,12 +15,14 @@ import java.util.Optional;
 @RequestMapping("api/player")
 public class PlayerController {
 
-    @Autowired
-    private PlayerServiceImpl playerService;
+    private final PlayerServiceImpl playerService;
 
-    @Autowired
-    private PlayerMapper playerMapper;
+    private final PlayerMapper playerMapper;
 
+    public PlayerController(PlayerServiceImpl playerService, PlayerMapper playerMapper) {
+        this.playerService = playerService;
+        this.playerMapper = playerMapper;
+    }
 
     @CrossOrigin
     @GetMapping

@@ -4,7 +4,6 @@ import org.nunostudios.premierleagueservice.DTO.TeamDTO;
 import org.nunostudios.premierleagueservice.Mapper.TeamMapper;
 import org.nunostudios.premierleagueservice.Model.Team;
 import org.nunostudios.premierleagueservice.Service.impl.TeamServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -16,11 +15,14 @@ import java.util.Optional;
 @RequestMapping("api/team")
 public class TeamController {
 
-    @Autowired
-    private TeamServiceImpl teamService;
+    private final TeamServiceImpl teamService;
 
-    @Autowired
-    private TeamMapper teamMapper;
+    private final TeamMapper teamMapper;
+
+    public TeamController(TeamServiceImpl teamService, TeamMapper teamMapper) {
+        this.teamService = teamService;
+        this.teamMapper = teamMapper;
+    }
 
 
     @CrossOrigin

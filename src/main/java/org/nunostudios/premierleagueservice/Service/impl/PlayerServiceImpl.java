@@ -8,7 +8,6 @@ import org.nunostudios.premierleagueservice.Model.Team;
 import org.nunostudios.premierleagueservice.Repository.PlayerRepository;
 import org.nunostudios.premierleagueservice.Repository.TeamRepository;
 import org.nunostudios.premierleagueservice.Service.PlayerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,14 +16,17 @@ import java.util.Optional;
 @Service
 public class PlayerServiceImpl implements PlayerService {
 
-    @Autowired
-    private TeamRepository teamRepository;
+    private final TeamRepository teamRepository;
 
-    @Autowired
-    private PlayerRepository playerRepository;
+    private final PlayerRepository playerRepository;
 
-    @Autowired
-    private PlayerMapper playerMapper;
+    private final PlayerMapper playerMapper;
+
+    public PlayerServiceImpl(TeamRepository teamRepository, PlayerRepository playerRepository, PlayerMapper playerMapper) {
+        this.teamRepository = teamRepository;
+        this.playerRepository = playerRepository;
+        this.playerMapper = playerMapper;
+    }
 
     @Override
     public Player createPlayer(PlayerDTO playerDTO){
