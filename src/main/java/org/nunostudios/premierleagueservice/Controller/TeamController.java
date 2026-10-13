@@ -52,6 +52,13 @@ public class TeamController {
     }
 
     @CrossOrigin
+    @GetMapping("/top5")
+    @ResponseStatus(HttpStatus.OK)
+    public List<TeamDTO> getTopFiveTeams() {
+        return teamMapper.toDTOList(this.teamService.getTopFiveTeams());
+    }
+
+    @CrossOrigin
     @PostMapping()
     @ResponseStatus(HttpStatus.OK)
     public TeamDTO createTeam(@RequestBody TeamDTO teamDTO) {

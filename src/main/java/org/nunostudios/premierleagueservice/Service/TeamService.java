@@ -11,6 +11,7 @@ public interface TeamService {
     List<Team> getTeams();
     Optional<Team> getTeamById(Long id);
     Team getTableLeader();
+    List<Team> getTopFiveTeams();
     Team updateTeam(Long teamId, TeamDTO teamDTO);
     boolean deleteTeam(Long id);
 }

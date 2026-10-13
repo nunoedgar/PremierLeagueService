@@ -62,6 +62,11 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
+    public List<Team> getTopFiveTeams(){
+        return this.teamRepository.findTop5ByOrderByPointsDesc();
+    }
+
+    @Override
     public Team updateTeam(Long teamId, TeamDTO teamDTO){
         Optional<Team> byId = this.teamRepository.findById(teamId);
         if(byId.isEmpty()) throw new EntityNotFoundException("Team not found");
